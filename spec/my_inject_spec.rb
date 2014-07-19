@@ -47,9 +47,15 @@ describe Array do
 			end
 			expect(hash).to eq({'A' => 'a', 'B' => 'b', 'C' => 'c' })
 		end
+
+		it 'the orginal array is still the same' do
+			original = [1,2,3,4]
+			original.my_inject(&:+)
+			expect(original).to eq [1,2,3,4]
+		end
 	end
 
-	context 'recusive inject' do
+	context 'recusive_inject' do
 		it 'can sum a number without an initial value' do
 			expect([1,2,3].recursive_inject{ |memo, value| memo += value }).to eq 6
 		end
@@ -94,6 +100,12 @@ describe Array do
 			  memo
 			end
 			expect(hash).to eq({'A' => 'a', 'B' => 'b', 'C' => 'c' })
+		end
+
+		it 'the orginal array is still the same' do
+			original = [1,2,3,4]
+			original.recursive_inject(&:+)
+			expect(original).to eq [1,2,3,4]
 		end
 	end
 end

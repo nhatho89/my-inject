@@ -1,16 +1,15 @@
 class Array
 	def my_inject(initial=nil)
-		memo = initial || self.slice!(0)
-		self.each do |element|
-			memo = yield memo, element
-		end
+		clone = self.dup
+		memo = initial || clone.slice!(0)
+		clone.each { |element| memo = yield memo, element }
 		memo
 	end
 
-	def recursive_inject(initial=nil, &blk)
+	def recursive_inject(initial=nil, &block)
 		memo = initial || self.slice!(0)
 		return memo if self.empty?
-		memo = blk.call(memo, slice!(0))
-		self.recursive_inject(memo, &blk)
+		memo = yield(memo, self.slice!(0))
+		recursive_inject(memo, &block)
 	end
 end
