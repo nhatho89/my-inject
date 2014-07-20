@@ -102,10 +102,5 @@ describe Array do
 			expect(hash).to eq({'A' => 'a', 'B' => 'b', 'C' => 'c' })
 		end
 
-		it 'the orginal array is still the same' do
-			original = [1,2,3,4]
-			original.recursive_inject(&:+)
-			expect(original).to eq [1,2,3,4]
-		end
 	end
 end
