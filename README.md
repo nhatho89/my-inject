@@ -11,9 +11,9 @@ Get a better understanding of the inner workings of Ruby methods and using recur
 git clone git@github.com:yoshdog/my-inject.git
 cd my-inject
 irb
-require './lib/my-inject.rb'
-[1,2,3].my_inject(5)
-[1,2,3].recursive_inject(5)
+require './lib/my_inject.rb'
+[1,2,3].my_inject(5,&:+)
+[1,2,3].recursive_inject(5,&:+)
 ```
 
 ### How to test it
